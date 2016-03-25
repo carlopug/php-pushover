@@ -468,6 +468,7 @@ class Pushover
             $c = curl_init();
             curl_setopt($c, CURLOPT_URL, sprintf(self::SOUNDS_URL,$this->_token));
             curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
             $response = curl_exec($c);
             $decoded = json_decode($response,true);
             return $decoded['sounds'];
